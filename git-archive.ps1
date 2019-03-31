@@ -1,5 +1,6 @@
 function git-archive {    
     
+    # git-archive <branch> [-date|-datetime]
     [CmdletBinding(DefaultParameterSetName = 'SubBranch')]
     param 
     (                
@@ -20,9 +21,9 @@ function git-archive {
     
     if ($subBranch) { $tag = Write-Output $tag/$subBranch }
     
-    git tag $tag $branch
-    git push origin $tag
+    git.exe tag $tag $branch
+    git.exe push origin $tag
 
-    git branch -d $branch
-    git push origin :$branch
+    git.exe branch -d $branch
+    git.exe push origin :$branch
 }
